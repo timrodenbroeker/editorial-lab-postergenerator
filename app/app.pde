@@ -15,7 +15,7 @@
 //
 
 // Hier sind ein paar Variablen, die verändert werden dürfen
-float PinselGroesse = 40;
+float PinselGroesse = 50;
 
 
 ////////////////////////////////////////////////////////////
@@ -60,14 +60,15 @@ void draw() {
   }
 
   if (mousePressed) {
-    topLayer.ellipse(mouseX-gapX, mouseY-gapY, 30, 30);
+    topLayer.ellipse(mouseX-gapX, mouseY-gapY, PinselGroesse, PinselGroesse);
   }
   topLayer.endDraw();
 
   image(poster, width/2, height/2);
   image(topLayer, width/2, height/2);
-
-  videoExport.saveFrame();
+  if (frameCount % 16 == 0) {
+    videoExport.saveFrame();
+  }
 }
 
 void keyReleased() {
